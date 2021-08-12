@@ -1,0 +1,37 @@
+/* ==UserStyle==
+@name           AWS Management Console for DEMO
+@namespace      github.com/ma2shita/stylus-aws-management-console
+@version        1.0.0
+@description    Dynamic masking for AWS Management console with Stylus
+@author         Kohei "Max" MATSUSHITA
+@homepageURL    https://github.com/ma2shita/stylus-aws-management-console
+@license        MIT License
+==/UserStyle== */
+
+@-moz-document domain("console.aws.amazon.com") {
+  #nav-usernameMenu{filter:blur(5px);}
+  #iam-sidebar > if-feature > div > div.iam-options > div > span:nth-child(2) > span.ng-binding.ng-scope{filter:blur(5px);}
+}
+
+@-moz-document regexp("https://.+\\.console\\.aws\\.amazon\\.com/iot/home\\?region=.+#/settings") {
+  /* AWS IoT Core: Endpoint */
+  #spa div.copyIcon > div > div {filter:blur(4px);}
+}
+
+@-moz-document regexp("https://.+\\.console\\.aws\\.amazon\\.com/lambda/home\\?region=.+#/functions/.+") {
+}
+
+@-moz-document regexp("https://.+\\.console\\.aws\\.amazon\\.com/sns/v3/home\\?region=.+#/.+") {
+  /* Amazon SNS */
+  #create-sub-topic-arn {filter:blur(4px);}
+  #create-sub-destination:not(:placeholder-shown){filter:blur(4px);}
+
+  /* /topics */
+  #app div.awsui-util-spacing-v-s:nth-child(2) > div:nth-child(2) > div:nth-child(2) {filter:blur(5px);}
+  #topic-details-arn {filter:blur(5px);}
+
+  /* /subscriptions */
+  #app div.awsui-table-container > table > tbody td:nth-child(3) > span > span {filter:blur(5px);}
+  #subscription-details-arn {filter:blur(5px);}
+  #app div.awsui-util-spacing-v-s:nth-child(1) > div:nth-child(2) > div:nth-child(2) {filter:blur(5px);}
+}
