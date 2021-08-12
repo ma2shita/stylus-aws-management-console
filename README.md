@@ -1,4 +1,4 @@
-# stylus-soarcom-userconsole
+# stylus-aws-management-console
 
 (JP) ユーザーCSSを動的に適用する機能拡張「[Stylus](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne)」を利用した動的マスキングで、[AWSマネジメントコンソール](https://console.aws.amazon.com/)に適用できます。
 
