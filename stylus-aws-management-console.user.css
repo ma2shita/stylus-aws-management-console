@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           AWS Management Console for DEMO
 @namespace      github.com/ma2shita/stylus-aws-management-console
-@version        1.0.1
+@version        1.0.2
 @description    Dynamic masking for AWS Management console with Stylus
 @author         Kohei "Max" MATSUSHITA
 @homepageURL    https://github.com/ma2shita/stylus-aws-management-console
@@ -51,4 +51,9 @@
   #app div.awsui-table-container > table > tbody td:nth-child(3) > span > span {filter:blur(5px);}
   #subscription-details-arn {filter:blur(5px);}
   #app div.awsui-util-spacing-v-s:nth-child(1) > div:nth-child(2) > div:nth-child(2) {filter:blur(5px);}
+}
+
+/* AWS IAM */
+@-moz-document regexp("https://console\\.aws\\.amazon\\.com/.+") {
+  .awsui-util-copy-text {filter:blur(5px);}
 }
