@@ -54,6 +54,6 @@
 }
 
 /* AWS IAM */
-@-moz-document regexp("https://console\\.aws\\.amazon\\.com/.+") {
+@-moz-document regexp("https://console\\.aws\\.amazon\\.com/iamv2/home?.+home") {
   .awsui-util-copy-text {filter:blur(5px);}
 }
