@@ -60,4 +60,5 @@
 
 @-moz-document regexp("https://console\\.aws\\.amazon\\.com/iam/home?.+/(users|roles)/.*") {
   .user-select-all {filter:blur(5px);}
+  a[href*="signin.aws.amazon.com"] {filter:blur(5px);}
 }
