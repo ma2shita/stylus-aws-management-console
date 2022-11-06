@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           AWS Management Console for DEMO
 @namespace      github.com/ma2shita/stylus-aws-management-console
-@version        1.0.1
+@version        1.0.3
 @description    Dynamic masking for AWS Management console with Stylus
 @author         Kohei "Max" MATSUSHITA
 @homepageURL    https://github.com/ma2shita/stylus-aws-management-console
@@ -13,9 +13,15 @@
   #iam-sidebar > if-feature > div > div.iam-options > div > span:nth-child(2) > span.ng-binding.ng-scope {filter:blur(5px);}
 }
 
+/* AWS IoT Core */
+
 @-moz-document regexp("https://.+\\.console\\.aws\\.amazon\\.com/iot/home\\?region=.+#/settings") {
   /* AWS IoT Core: Endpoint */
   #spa div.copyIcon > div > div {filter:blur(4px);}
+}
+
+@-moz-document regexp("https://.+\\.console\\.aws\\.amazon\\.com/iot/home\\?region=.+#/test") {
+  #console-nav-footer-inner{display:none;}
 }
 
 /* AWS Lambda */
@@ -38,8 +44,9 @@
   tr:nth-child(2) div.logs__events__json {filter:blur(0);} /* 2nd line */
 }
 
+/* Amazon SNS */
+
 @-moz-document regexp("https://.+\\.console\\.aws\\.amazon\\.com/sns/v3/home\\?region=.+#/.+") {
-  /* Amazon SNS */
   #create-sub-topic-arn {filter:blur(4px);}
   #create-sub-destination:not(:placeholder-shown){filter:blur(4px);}
 
@@ -51,4 +58,12 @@
   #app div.awsui-table-container > table > tbody td:nth-child(3) > span > span {filter:blur(5px);}
   #subscription-details-arn {filter:blur(5px);}
   #app div.awsui-util-spacing-v-s:nth-child(1) > div:nth-child(2) > div:nth-child(2) {filter:blur(5px);}
+}
+
+/* Amazon Systems Manager */
+
+@-moz-document regexp("https://.+\\.console\\.aws\\.amazon\\.com/systems-manager/activations/\\?region=.+") {
+  #activation-created-flash #new-activation-code {filter:blur(6px);}
+  #activation-created-flash #new-activation-id {filter:blur(6px);}
+  div.awsui-table-container > table > tbody > tr > td:nth-child(2) {filter:blur(6px);}
 }
