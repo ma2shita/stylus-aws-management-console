@@ -71,7 +71,7 @@
 
 /* IAM role */
 
-@-moz-document regexp("https://.+\\.console\\.aws\\.amazon\\.com/iamv2/home#/roles/details/.+") {
+@-moz-document regexp("https://.+\\.console\\.aws\\.amazon\\.com/iamv2/home#/roles/details/.+"), regexp("https://.+\\.console\\.aws\\.amazon\\.com/iamv2/home\\?.+") {
   #app awsui-column-layout > div > span > div > div:nth-child(2) > div:nth-child(2){filter:blur(4px);}
 }
 
