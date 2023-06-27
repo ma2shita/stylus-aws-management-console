@@ -87,3 +87,14 @@
   #app awsui-column-layout > div > span > div > div:nth-child(2) > div:nth-child(2){filter:blur(4px);} /* ARN */
 }
 
+/* Amazon Cognito User Pool */
+
+@-moz-document regexp("https://.+\\.console\\.aws\\.amazon\\.com/cognito/v2/idp/user-pools/.+") {
+  #app div.cognito_key-value-item_value > span.cognito_copyable {filter: blur(4px);} /* Cognito UserPoolId */
+  div[id$="-app-integration-panel"]> div > div:nth-child(3) > div > div:nth-child(2) > div > div > div > div > table > tbody > tr > td:nth-child(3) {filter: blur(5px);} /* App Client Id */
+  div[id$="-users-panel"] > div > div:nth-child(2) > div > div > div > div > table > tbody > tr > td {filter: blur(4px);}/* users info in UserPool */
+}
+
+@-moz-document regexp("https://.+\\.console\\.aws\\.amazon\\.com/cognito/v2/idp/user-pools\\?region=.+") {
+  #app div>div>table>tbody>tr>td:nth-child(3) {filter: blur(4px);} /* Cognito UserPoolId */
+}
