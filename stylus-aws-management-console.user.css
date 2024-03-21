@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           AWS Management Console for DEMO
 @namespace      github.com/ma2shita/stylus-aws-management-console
-@version        1.1.0
+@version        1.1.1
 @description    Dynamic masking for AWS Management console with Stylus
 @author         Kohei "Max" MATSUSHITA
 @homepageURL    https://github.com/ma2shita/stylus-aws-management-console
@@ -97,4 +97,15 @@
 
 @-moz-document regexp("https://.+\\.console\\.aws\\.amazon\\.com/cognito/v2/idp/user-pools\\?region=.+") {
   #app div>div>table>tbody>tr>td:nth-child(3) {filter: blur(4px);} /* Cognito UserPoolId */
+}
+
+/* AWS IAM */
+@-moz-document regexp("https://console\\.aws\\.amazon\\.com/iamv2/home?.+home") {
+  .awsui-util-copy-text {filter:blur(5px);}
+}
+
+@-moz-document regexp("https://console\\.aws\\.amazon\\.com/iam/home?.+/(users|roles)/.*") {
+  .user-select-all {filter:blur(5px);}
+  a[href*="signin.aws.amazon.com"] {filter:blur(5px);}
+  .account-id-value  {filter:blur(5px);}
 }
