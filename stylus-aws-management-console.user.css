@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           AWS Management Console for DEMO
 @namespace      github.com/ma2shita/stylus-aws-management-console
-@version        1.0.2
+@version        1.1.1
 @description    Dynamic masking for AWS Management console with Stylus
 @author         Kohei "Max" MATSUSHITA
 @homepageURL    https://github.com/ma2shita/stylus-aws-management-console
@@ -9,48 +9,94 @@
 ==/UserStyle== */
 
 @-moz-document domain("console.aws.amazon.com") {
-  #nav-usernameMenu{filter:blur(5px);}
+  #nav-usernameMenu{filter:blur(5px);} /* AccountId and IAM user on navigation bar */
+  #menu--account > div > div > div > span:nth-child(2) {filter:blur(5px);} /* AccountId and IAM user on menu */
   #iam-sidebar > if-feature > div > div.iam-options > div > span:nth-child(2) > span.ng-binding.ng-scope {filter:blur(5px);}
 }
 
+/* AWS IoT Core */
+
 @-moz-document regexp("https://.+\\.console\\.aws\\.amazon\\.com/iot/home\\?region=.+#/settings") {
-  /* AWS IoT Core: Endpoint */
-  #spa div.copyIcon > div > div {filter:blur(4px);}
+  #spa div.copyIcon {filter:blur(4px);} /* Endpoint */
+}
+
+@-moz-document regexp("https://.+\\.console\\.aws\\.amazon\\.com/iot/home\\?region=.+#/test") {
+  #console-nav-footer-inner{display:none;}
+  #awsc-navigation-container{display:none;}
 }
 
 /* AWS Lambda */
 
 @-moz-document regexp("https://.+\\.console\\.aws\\.amazon\\.com/lambda/home\\?region=.+#/functions") {
-  #lambda-listFunctions > awsui-table > div > div.awsui-table-container > table > tbody > tr > td:nth-child(2) > span > a {filter:blur(5px);} /* function list */
-  #lambda-listFunctions > awsui-table > div > div.awsui-table-container > table > tbody > tr:nth-child(1) > td:nth-child(2) > span > a {filter:blur(0);} /* 1st line */
+  #lambda-listFunctions tbody > tr > td:nth-child(2) {filter:blur(5px);} /* function list */
+  #lambda-listFunctions tbody > tr:nth-child(1) > td:nth-child(2) {filter:blur(0);} /* 1st line */
 }
 
 @-moz-document regexp("https://.+\\.console\\.aws\\.amazon\\.com/lambda/home\\?region=.+#/functions/.+") {
-  #app-designer > section > div > div > div > div > div > div > div > div:nth-child(3) > div > div > div:nth-child(2) > span > span:nth-child(2) {filter:blur(5px);} /* ARN */
+  #app-designer > section > div > div > div:nth-child(2) > div > div > div > div > div:nth-child(3) {filter:blur(5px);} /* ARN */
 }
 
 /* Amazon CloudWatch Logs */
 
-@-moz-document regexp(".+") { /* Effecive to very large */
-  #awsui-expandable-section-0 > span > awsui-column-layout > div > span > div > div:nth-child(4) > div > div:nth-child(1) > div:nth-child(2){filter:blur(5px);} /* ARN */
+@-moz-document regexp(".+") { /* Effective to very large */
+  #awsui-expandable-section-0 > span > awsui-column-layout > div > span > div > div:nth-child(1) > div > div:nth-child(1) > div:nth-child(2) {filter:blur(5px);} /* ARN */
   span.logs__log-events-table__cell {filter:blur(5px);} /* log */
   div.logs__events__json {filter:blur(5px);} /* log */
   tr:nth-child(2) div.logs__events__json {filter:blur(0);} /* 2nd line */
 }
 
+/* Amazon SNS */
+
 @-moz-document regexp("https://.+\\.console\\.aws\\.amazon\\.com/sns/v3/home\\?region=.+#/.+") {
-  /* Amazon SNS */
   #create-sub-topic-arn {filter:blur(4px);}
   #create-sub-destination:not(:placeholder-shown){filter:blur(4px);}
+}
 
+@-moz-document regexp("https://.+\\.console\\.aws\\.amazon\\.com/sns/v3/home\\?region=.+#/topics") {
   /* /topics */
-  #app div.awsui-util-spacing-v-s:nth-child(2) > div:nth-child(2) > div:nth-child(2) {filter:blur(5px);}
-  #topic-details-arn {filter:blur(5px);}
+  #app div.awsui-table-inner tbody td:nth-child(4) {filter:blur(5px);} /* ARN */
+}
 
+@-moz-document regexp("https://.+\\.console\\.aws\\.amazon\\.com/sns/v3/home\\?region=.+#/topic/.+") {
+  /* /topic */
+  #topic-details-arn {filter:blur(5px);} /* ARN */
+  #app div.awsui-util-container > div:nth-child(2) div:nth-child(2) div:nth-child(2) div:nth-child(2) {filter:blur(5px);} /* Topic owner */
+  #app div.awsui-table-inner tbody td:nth-child(3) {filter:blur(5px);} /* Endpoint */
+}
+
+@-moz-document regexp("https://.+\\.console\\.aws\\.amazon\\.com/sns/v3/home\\?region=.+#/subscription.+") {
   /* /subscriptions */
-  #app div.awsui-table-container > table > tbody td:nth-child(3) > span > span {filter:blur(5px);}
-  #subscription-details-arn {filter:blur(5px);}
-  #app div.awsui-util-spacing-v-s:nth-child(1) > div:nth-child(2) > div:nth-child(2) {filter:blur(5px);}
+  #app div.awsui-table-inner tbody td:nth-child(3) {filter:blur(5px);} /* Endpoint */
+
+  /* /subscription */
+  #subscription-details-arn {filter:blur(5px);} /* ARN */
+  #app div.awsui-util-container > div:nth-child(2) > div > div:nth-child(1) div:nth-child(2) div:nth-child(2) {filter:blur(5px);} /* Endpoint */
+}
+
+/* Amazon Systems Manager */
+
+@-moz-document regexp("https://.+\\.console\\.aws\\.amazon\\.com/systems-manager/activations/\\?region=.+") {
+  #activation-created-flash #new-activation-code {filter:blur(6px);}
+  #activation-created-flash #new-activation-id {filter:blur(6px);}
+  div.awsui-table-container > table > tbody > tr > td:nth-child(2) {filter:blur(6px);} /* ID */
+}
+
+/* IAM role */
+
+@-moz-document regexp("https://.+\\.console\\.aws\\.amazon\\.com/iamv2/home#/roles/details/.+"), regexp("https://.+\\.console\\.aws\\.amazon\\.com/iamv2/home\\?.+") {
+  #app awsui-column-layout > div > span > div > div:nth-child(2) > div:nth-child(2){filter:blur(4px);} /* ARN */
+}
+
+/* Amazon Cognito User Pool */
+
+@-moz-document regexp("https://.+\\.console\\.aws\\.amazon\\.com/cognito/v2/idp/user-pools/.+") {
+  #app div.cognito_key-value-item_value > span.cognito_copyable {filter: blur(4px);} /* Cognito UserPoolId */
+  div[id$="-app-integration-panel"]> div > div:nth-child(3) > div > div:nth-child(2) > div > div > div > div > table > tbody > tr > td:nth-child(3) {filter: blur(5px);} /* App Client Id */
+  div[id$="-users-panel"] > div > div:nth-child(2) > div > div > div > div > table > tbody > tr > td {filter: blur(4px);}/* users info in UserPool */
+}
+
+@-moz-document regexp("https://.+\\.console\\.aws\\.amazon\\.com/cognito/v2/idp/user-pools\\?region=.+") {
+  #app div>div>table>tbody>tr>td:nth-child(3) {filter: blur(4px);} /* Cognito UserPoolId */
 }
 
 /* AWS IAM */
